@@ -83,7 +83,8 @@ namespace UdemyIdentityServer.AuthServer
                             "api1.read",
                             IdentityServerConstants.StandardScopes.OfflineAccess,
                             "CountryAndCity",
-                            "Roles"
+                            "Roles",
+                            IdentityServerConstants.StandardScopes.Email,
                       },
                     AccessTokenLifetime=(int)(DateTime.Now.AddHours(2)-DateTime.Now).TotalSeconds,
                     AllowOfflineAccess=true,
@@ -129,6 +130,7 @@ namespace UdemyIdentityServer.AuthServer
         {
             return new List<IdentityResource>()
             {
+                new IdentityResources.Email(),
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResource(){Name="CountryAndCity",DisplayName="Country and City",Description="Kullanıcının ilçe ve şehir bilgisi",
