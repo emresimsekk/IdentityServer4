@@ -67,7 +67,7 @@ namespace UdemyIdentityServer.AuthServer
                 },
 
 
-                  new Client()
+                new Client()
                 {
                     ClientId="Client1-Mvc",
                     RequirePkce=false,
@@ -93,10 +93,11 @@ namespace UdemyIdentityServer.AuthServer
                     AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,
                     RequireConsent=false
 
-                    
+
 
                 },
-                   new Client()
+
+                new Client()
                 {
                     ClientId="Client2-Mvc",
                     RequirePkce=false,
@@ -120,10 +121,32 @@ namespace UdemyIdentityServer.AuthServer
                     RefreshTokenExpiration=TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,
                     RequireConsent=false
+                },
 
-
-
+                new Client()
+                {
+                    ClientId="js-client",
+                    RequireClientSecret=false,
+                    AllowedGrantTypes=GrantTypes.Code,
+                    ClientName="js Client(Angular)",
+                    AllowedScopes=
+                      {
+                            IdentityServerConstants.StandardScopes.Email,
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            "api1.read",
+                            IdentityServerConstants.StandardScopes.OfflineAccess,
+                            "CountryAndCity",
+                            "Roles"
+                      },
+                    RedirectUris={"http://localhost:4200/callback"},
+                    //tarayıcı için cors
+                    AllowedCorsOrigins={ "http://localhost:4200" },
+                    PostLogoutRedirectUris={ "http://localhost:4200" }
+                    
                 }
+
+
             };
         }
         public static IEnumerable<IdentityResource> GetIdentityResources()

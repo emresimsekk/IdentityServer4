@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyIdentityServer.AuthServer", "UdemyIdentityServer.AuthServer\UdemyIdentityServer.AuthServer.csproj", "{64B5B341-2075-47A9-BC8D-3096FDA4434C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer.AuthServer", "UdemyIdentityServer.AuthServer\UdemyIdentityServer.AuthServer.csproj", "{64B5B341-2075-47A9-BC8D-3096FDA4434C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyIdentityServer.Client1", "UdemyIdentityServer.Client1\UdemyIdentityServer.Client1.csproj", "{CE40A547-DA72-4EB2-9449-9DFCADFCB652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer.Client1", "UdemyIdentityServer.Client1\UdemyIdentityServer.Client1.csproj", "{CE40A547-DA72-4EB2-9449-9DFCADFCB652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyIdentityServer.Client2", "UdemyIdentityServer.Client2\UdemyIdentityServer.Client2.csproj", "{AF5FBFBD-8410-4E7F-BD85-494B8F6B95ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer.Client2", "UdemyIdentityServer.Client2\UdemyIdentityServer.Client2.csproj", "{AF5FBFBD-8410-4E7F-BD85-494B8F6B95ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyIdentityServer.Api1", "UdemyIdentityServer.Api1\UdemyIdentityServer.Api1.csproj", "{47D7CF5E-5DFA-4D89-A11E-A58A05F63030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer.Api1", "UdemyIdentityServer.Api1\UdemyIdentityServer.Api1.csproj", "{47D7CF5E-5DFA-4D89-A11E-A58A05F63030}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyIdentityServer.Api2", "UdemyIdentityServer.Api2\UdemyIdentityServer.Api2.csproj", "{97A65323-0E3A-4CD2-8A18-02339653C268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer.Api2", "UdemyIdentityServer.Api2\UdemyIdentityServer.Api2.csproj", "{97A65323-0E3A-4CD2-8A18-02339653C268}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{063606C1-A57F-4665-A405-2F757CCE35BE}"
 	ProjectSection(SolutionItems) = preProject
