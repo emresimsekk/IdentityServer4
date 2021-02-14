@@ -56,7 +56,7 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedGrantTypes=GrantTypes.ClientCredentials,
                     AllowedScopes={"api1.read"}
                 },
-                  //ClientCredentials
+                 //ClientCredentials
                 new Client()
                 {
                     ClientId="Client2",
@@ -75,19 +75,52 @@ namespace UdemyIdentityServer.AuthServer
                     ClientSecrets=new []{new Secret("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.Hybrid,
                     RedirectUris=new List<string>{"https://localhost:5006/signin-oidc"},
+                    PostLogoutRedirectUris=new List<string>{"https://localhost:5006/signout-callback-oidc" },
                     AllowedScopes=
                       {
                             IdentityServerConstants.StandardScopes.OpenId,
                             IdentityServerConstants.StandardScopes.Profile,
                             "api1.read",
-                            IdentityServerConstants.StandardScopes.OfflineAccess
+                            IdentityServerConstants.StandardScopes.OfflineAccess,
+                            "CountryAndCity",
+                            "Roles"
                       },
-                    AccessTokenLifetime=DateTime.Now.AddHours(2).Second,
+                    AccessTokenLifetime=(int)(DateTime.Now.AddHours(2)-DateTime.Now).TotalSeconds,
                     AllowOfflineAccess=true,
                     RefreshTokenUsage=TokenUsage.ReUse,
-                    SlidingRefreshTokenLifetime=DateTime.Now.AddDays(60).Second,
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,
+                    RequireConsent=false
 
                     
+
+                },
+                   new Client()
+                {
+                    ClientId="Client2-Mvc",
+                    RequirePkce=false,
+                    ClientName="Client2 mvc uygulama",
+                    ClientSecrets=new []{new Secret("secret".Sha256())},
+                    AllowedGrantTypes=GrantTypes.Hybrid,
+                    RedirectUris=new List<string>{"https://localhost:5011/signin-oidc"},
+                    PostLogoutRedirectUris=new List<string>{"https://localhost:5011/signout-callback-oidc" },
+                    AllowedScopes=
+                      {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            "api1.read","api2.read",
+                            IdentityServerConstants.StandardScopes.OfflineAccess,
+                            "CountryAndCity",
+                            "Roles"
+                      },
+                    AccessTokenLifetime=(int)(DateTime.Now.AddHours(2)-DateTime.Now).TotalSeconds,
+                    AllowOfflineAccess=true,
+                    RefreshTokenUsage=TokenUsage.ReUse,
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,
+                    RequireConsent=false
+
+
 
                 }
             };
@@ -98,6 +131,10 @@ namespace UdemyIdentityServer.AuthServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource(){Name="CountryAndCity",DisplayName="Country and City",Description="Kullanıcının ilçe ve şehir bilgisi",
+                    UserClaims=new []{ "country","city"} },
+                new IdentityResource(){Name="Roles",DisplayName="Roles",Description="Kullanıcı Rolleri",
+                    UserClaims=new []{"role" } }
             };
         }
         public static IEnumerable<TestUser> GetUsers()
@@ -113,6 +150,9 @@ namespace UdemyIdentityServer.AuthServer
                     {
                         new Claim("given_name", "Emre"),
                         new Claim("family_name", "Şimşek"),
+                        new Claim("country", "Türkiye"),
+                        new Claim("city", "Bursa"),
+                        new Claim("role", "admin"),
                     }
                 },
                  new TestUser
@@ -124,6 +164,9 @@ namespace UdemyIdentityServer.AuthServer
                     {
                         new Claim("given_name", "Uğur"),
                         new Claim("family_name", "Çiftci"),
+                        new Claim("country", "Türkiye"),
+                        new Claim("city", "Artvin"),
+                        new Claim("role", "customer"),
                     }
                 }
             };

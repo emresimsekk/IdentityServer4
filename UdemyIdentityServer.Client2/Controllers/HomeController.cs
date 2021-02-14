@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using UdemyIdentityServer.Client2.Models;
 
 namespace UdemyIdentityServer.Client2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,6 +25,11 @@ namespace UdemyIdentityServer.Client2.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult User()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
