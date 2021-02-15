@@ -66,7 +66,7 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedScopes={"api1.read","api1.update","api2.write","api2.update" }
                 },
 
-
+                //code
                 new Client()
                 {
                     ClientId="Client1-Mvc",
@@ -144,7 +144,34 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedCorsOrigins={ "http://localhost:4200" },
                     PostLogoutRedirectUris={ "http://localhost:4200" }
                     
-                }
+                },
+
+                //pwd
+                new Client()
+                {
+                    ClientId="ClientResourceOwner-Mvc",
+                    ClientName="Client mvc uygulama",
+                    ClientSecrets=new []{new Secret("secret".Sha256())},
+                    AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes=
+                      {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            "api1.read",
+                            IdentityServerConstants.StandardScopes.OfflineAccess,
+                            "CountryAndCity",
+                            "Roles",
+                            IdentityServerConstants.StandardScopes.Email,
+                      },
+                    AccessTokenLifetime=(int)(DateTime.Now.AddHours(2)-DateTime.Now).TotalSeconds,
+                    AllowOfflineAccess=true,
+                    RefreshTokenUsage=TokenUsage.ReUse,
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,
+
+
+
+                },
 
 
             };
