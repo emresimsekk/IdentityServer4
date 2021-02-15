@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using UdemyIdentityServer.AuthServer.Models;
 using UdemyIdentityServer.AuthServer.Repository;
@@ -32,11 +33,27 @@ namespace UdemyIdentityServer.AuthServer
             {
                 option.UseSqlServer(Configuration.GetConnectionString("LocalDb"));
             });
+
+            var assemblyName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
             services.AddIdentityServer()
-                .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryApiScopes(Config.GetApiScopes())
-                .AddInMemoryClients(Config.GetClients())
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+
+                .AddConfigurationStore(opts=> {
+                    opts.ConfigureDbContext = c => c.UseSqlServer(Configuration.GetConnectionString("LocalDb"),sqlOpts=> {
+                        sqlOpts.MigrationsAssembly(assemblyName);
+                    });
+                })
+                .AddOperationalStore(opts =>
+                {
+                    opts.ConfigureDbContext = c => c.UseSqlServer(Configuration.GetConnectionString("LocalDb"), sqlOpts =>
+                    {
+                        sqlOpts.MigrationsAssembly(assemblyName);
+                    });
+                })
+                //.AddInMemoryApiResources(Config.GetApiResources())
+                //.AddInMemoryApiScopes(Config.GetApiScopes())
+                //.AddInMemoryClients(Config.GetClients())
+                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddDeveloperSigningCredential()
                 .AddProfileService<CustomProfileService>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();

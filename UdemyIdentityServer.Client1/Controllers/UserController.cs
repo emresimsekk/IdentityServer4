@@ -47,8 +47,8 @@ namespace UdemyIdentityServer.Client1.Controllers
         
 
             RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest();
-            refreshTokenRequest.ClientId = _configuration["Client:ClientId"];
-            refreshTokenRequest.ClientSecret = _configuration["Client:ClientSecret"];
+            refreshTokenRequest.ClientId = _configuration["ClientResourceOwner:ClientId"];
+            refreshTokenRequest.ClientSecret = _configuration["ClientResourceOwner:ClientSecret"];
             refreshTokenRequest.RefreshToken = refreshToken;
             refreshTokenRequest.Address = disco.TokenEndpoint;
 
