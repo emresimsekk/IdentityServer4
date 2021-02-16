@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Ports.txt = Ports.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyIdentityServer-IdentityApi.AuthServer", "UdemyIdentityServer-IdentityApi.AuthServer\UdemyIdentityServer-IdentityApi.AuthServer.csproj", "{84EB3CBA-1E8E-4845-8A04-DE03647E8D0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{97A65323-0E3A-4CD2-8A18-02339653C268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97A65323-0E3A-4CD2-8A18-02339653C268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97A65323-0E3A-4CD2-8A18-02339653C268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EB3CBA-1E8E-4845-8A04-DE03647E8D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EB3CBA-1E8E-4845-8A04-DE03647E8D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EB3CBA-1E8E-4845-8A04-DE03647E8D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EB3CBA-1E8E-4845-8A04-DE03647E8D0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
